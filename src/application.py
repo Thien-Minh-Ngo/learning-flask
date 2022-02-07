@@ -99,3 +99,8 @@ def dogs():
 @app.route("/main_page/")
 def main_page():
     return render_template('main_page.html')
+
+
+@app.route("/cats/")
+def cats():
+    return render_template('cats.html')

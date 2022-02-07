@@ -1,0 +1,25 @@
+.button {
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 24%) 3px 3px 10px;
+}
+
+.button:hover {
+    color: #ffffff;
+    background-color: #A9AFFE;
+}
+
+.button:before {
+    content="";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #A9AFFE;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+}
+
+
