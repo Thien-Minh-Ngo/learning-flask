@@ -1,1 +1,9 @@
 {% extends "main_page.html" %}
+
+{% block container %}
+    {% for dog in dogs %}
+        <div class="card">
+           <h1>{{ dog }}</h1>
+        </div>
+    {% endfor %}
+{% endblock %}

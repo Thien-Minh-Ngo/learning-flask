@@ -93,7 +93,8 @@ def page_with_flex():
 
 @app.route("/dogs/")
 def dogs():
-    return render_template('dogs.html')
+    dogs = ["rdp1", "rdp2", "rdp3", "rdp4", "rdp5", "rdp6"]
+    return render_template('dogs.html', dogs=dogs)
 
 
 @app.route("/main_page/")

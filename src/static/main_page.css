@@ -1,0 +1,15 @@
+.main-container {
+    display: flex;
+    align-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    background-color: #A9AFFE;
+    width: 200px;
+    height: 250px;
+    margin: 10px;
+}
