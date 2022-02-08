@@ -12,4 +12,16 @@
     width: 200px;
     height: 250px;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    max-height: 250px;
+    max-width: 200px;
+    object-fit: cover;
+    object-position: 100% 0;
 }

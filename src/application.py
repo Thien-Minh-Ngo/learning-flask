@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify
-
+import datetime
 app = Flask(__name__)
+
 
 
 @app.route("/")
@@ -104,4 +105,6 @@ def main_page():
 
 @app.route("/cats/")
 def cats():
-    return render_template('cats.html')
+    cats = ["rcp1", "rcp2", "rcp3", "rcp4", "rcp5", "rcp6"]
+    return render_template('cats.html', cats=cats)
+
