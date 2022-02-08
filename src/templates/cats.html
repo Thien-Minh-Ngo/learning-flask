@@ -3,7 +3,9 @@
 {% block container %}
     {% for cat in cats %}
         <div class="card">
-            <h1>{{ cat }}</h1>
+            <div class="card-content">
+                <img class="cats"/>
+            </div>
         </div>
     {% endfor %}
 {% endblock %}

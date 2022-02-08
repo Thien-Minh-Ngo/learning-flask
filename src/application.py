@@ -89,7 +89,7 @@ def cars():
 
 @app.route("/layout/")
 def page_with_flex():
-    return render_template('layout.html')
+    return render_template('japy.html')
 
 
 @app.route("/dogs/")

@@ -1,11 +1,12 @@
 {# This is templates/base.html template #}
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='task_bar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='cc.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='navigation.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main_page.css') }}">
+    <script src="{{ url_for('static', filename='javascript/main.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/task_bar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cc.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_page.css') }}">
     <title>
       {% block title %}
       {% endblock %}
