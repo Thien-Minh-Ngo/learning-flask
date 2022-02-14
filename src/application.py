@@ -1,7 +1,10 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, url_for, request, flash
+from werkzeug.utils import redirect
+from wtforms import Form, BooleanField, StringField, PasswordField, validators, IntegerField
 import datetime
 app = Flask(__name__)
 
+number: int = 4
 
 
 @app.route("/")
@@ -29,7 +32,7 @@ def test(page_name):
 
 
 @app.route("/users/", methods=['GET'])
-def user():
+def user1():
     users = [
         {
           "firstname": "Kevin",
@@ -103,8 +106,25 @@ def main_page():
     return render_template('main_page.html')
 
 
-@app.route("/cats/")
+@app.route("/cats/", methods=['GET', 'POST'])
 def cats():
-    cats = ["rcp1", "rcp2", "rcp3", "rcp4", "rcp5", "rcp6"]
-    return render_template('cats.html', cats=cats)
+    return render_template('cats.html', number=number)
+
+
+@app.route("/cats/number", methods=['POST'])
+def cats_number():
+    global number
+    number = int(request.form['number'])
+    print(f'save_form called, name:{number}')
+    return redirect('/cats/')
+
+
+class User:
+    pass
+
+
+@app.route("/forms/")
+def forms():
+    return render_template('form.html')
+
 

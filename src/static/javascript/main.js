@@ -17,3 +17,11 @@
     }
     console.log("DOM fully loaded and parsed", dogs);
   });
+
+ document.addEventListener("DOMContentLoaded2", function(event) {
+  const resultsList = document.getElementById('results')
+  new URLSearchParams(window.location.search).forEach((value, name) => {
+    resultsList.append(`${name}: ${value}`)
+    resultsList.append(document.createElement('br'))
+  })
+  });
