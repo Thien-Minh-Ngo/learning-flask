@@ -1,7 +1,17 @@
 {% extends "main_page.html" %}
 
 {% block container %}
-    {% for dog in dogs %}
+<div class="content">
+    <form method="post" action="/dogs/number">
+            <div>
+                <input type="text" placeholder="Number of pictures:" name="number" value="{{number}}">
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    <div class="flex">
+    {% for x in range(number) %}
         <div class="card">
             <div class="card-content">
                 <img class="dogs"/>

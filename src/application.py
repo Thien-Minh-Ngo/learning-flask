@@ -90,15 +90,17 @@ def cars():
     return jsonify(cars)
 
 
-@app.route("/layout/")
-def page_with_flex():
-    return render_template('japy.html')
-
-
-@app.route("/dogs/")
+@app.route("/dogs/", methods=['GET', 'POST'])
 def dogs():
-    dogs = ["rdp1", "rdp2", "rdp3", "rdp4", "rdp5", "rdp6"]
-    return render_template('dogs.html', dogs=dogs)
+    return render_template('dogs.html', number=number)
+
+
+@app.route("/dogs/number", methods=['POST'])
+def dogs_number():
+    global number
+    number = int(request.form['number'])
+    print(f'save_form called, name:{number}')
+    return redirect('/dogs/')
 
 
 @app.route("/main_page/")
@@ -123,8 +125,21 @@ class User:
     pass
 
 
-@app.route("/forms/")
+name = ''
+
+
+@app.route("/form/", methods=['GET'])
 def forms():
-    return render_template('form.html')
+    return render_template('form.html', name=name)
+
+
+@app.route("/form/save", methods=['POST'])
+def save_form():
+    global name
+    name = request.form["name"]
+    return redirect('/form/')
+
+
+
 
 

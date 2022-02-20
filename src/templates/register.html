@@ -1,0 +1,64 @@
+{% extends "main_page.html" %}
+
+{% block container %}
+<h2>Register:</h2>
+<form action="/register/" method="POST" class="form_flex">
+    <div class="{%if form_data.name_error%} error {%endif%} flex">
+        <div class="form-field">
+            <label for="name" >Name *</label>
+            <input id="name" type="text" name="name" value="{{form_data.user.name}}">
+        </div>
+        {% if form_data.name_error%}
+            <p>Error: {{form_data.name_error}}</p>
+        {% endif%}
+    </div>
+    <div class="{%if form_data.surname_error%} error {%endif%} flex">
+        <div class="form-field">
+            <label for="surname" >Surname *</label>
+            <input id="surname" type="text" name="surname" value="{{form_data.user.surname}}">
+        </div>
+        {% if form_data.surname_error%}
+            <p>Error: {{form_data.surname_error}}</p>
+        {% endif%}
+    </div>
+    <div class="{%if form_data.address_error%} error {%endif%} flex">
+        <div class="form-field">
+            <label for="address" >Address *</label>
+            <input id="address" type="text" name="address" value="{{form_data.user.address}}">
+        </div>
+        {% if form_data.address_error%}
+            <p>Error: {{form_data.address_error}}</p>
+        {% endif%}
+    </div>
+    <div class="{%if form_data.zipcode_error%} error {%endif%} flex">
+         <div class="form-field">
+            <label for="zipcode" >Zip-code *</label>
+            <input id="zipcode" type="text" name="zipcode" value="{{form_data.user.zipcode}}">
+        </div>
+        {% if form_data.zipcode_error%}
+            <p>Error: {{form_data.zipcode_error}}</p>
+        {% endif%}
+    </div>
+    <div class="{%if form_data.city_error%} error {%endif%} flex">
+         <div class="form-field">
+            <label for="city" >City *</label>
+            <input id="city" type="text" name="city" value="{{form_data.user.city}}">
+        </div>
+        {% if form_data.city_error%}
+            <p>Error: {{form_data.city_error}}</p>
+        {% endif%}
+    </div>
+    <div class="{%if form_data.email_error%} error {%endif%} flex">
+         <div class="form-field">
+            <label for="email" >E-mail *</label>
+            <input id="email" type="text" name="email" value="{{form_data.user.email}}">
+        </div>
+        {% if form_data.email_error%}
+            <p>Error: {{form_data.email_error}}</p>
+        {% endif%}
+    </div>
+    <div class="rB">
+        <button class="button">Submit</button>
+    </div>
+</form>
+{% endblock %}

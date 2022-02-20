@@ -3,6 +3,7 @@ app = Flask(__name__)
 
 name = ''
 
+
 @app.route("/form/")
 def form():
     return render_template('form.html', loginData={'name': name})
