@@ -1,0 +1,30 @@
+{% extends "main_page.html" %}
+{% block container %}
+<h2>List of all users:</h2>
+<div class="col2">
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Address</th>
+            <th>Zipcode</th>
+            <th>City</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in user_list %}
+        <tr>
+            <td>{{ user['name'] }}</td>
+            <td>{{ user['surname'] }}</td>
+            <td>{{ user['address'] }}</td>
+            <td>{{ user['zipcode'] }}</td>
+            <td>{{ user['city'] }}</td>
+            <td>{{ user['email'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</div>
+</table>
+{% endblock %}
