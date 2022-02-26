@@ -1,0 +1,23 @@
+{% extends "main_page.html" %}
+{% block container %}
+<div class="col2">
+    <span>Thank you Mr/Mrs {{ user.surname }} for registering on our webpage! Here is your data:</span>
+</div>
+ <div class="col2">
+     {% for i in user %}
+        <div class="row">
+            <div class="w50p">
+                <span>{{ i }}:</span>
+            </div>
+            <div class="w50p">
+                <span>{{ user[i] }}</span>
+            </div>
+        </div>
+     {% endfor %}
+ </div>
+    <form action="/user-list/" class="w100p rrow">
+            <div class="w100p rrow">
+                <button class="button">continue</button>
+            </div>
+        </form>
+{% endblock %}

@@ -1,6 +1,20 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, json, jsonify
 
 app = Flask(__name__)
+
+USER_FILE_NAME = 'src/users.json'
+
+
+def load_user():
+    file = open(USER_FILE_NAME)  # lese aus users.json
+    content = json.load(file)
+    file.close()
+    print(content)
+    return content  # gibt gelesene liste zurück
+
+
+user_list = load_user()
+
 
 user = {
     "name": "",
@@ -33,6 +47,21 @@ def register():
             return render_template('register_confirm.html', user=form_data['user'])
 
     return render_template('register.html', form_data=form_data)
+
+
+@app.route("/register/delete/")
+def delete_user():
+    reset_user()
+    return redirect("/register/")
+
+
+def reset_user():
+    user["name"] = ''
+    user["surname"] = ''
+    user["address"] = ''
+    user["zipcode"] = ''
+    user["city"] = ''
+    user["email"] = ''
 
 
 def reset_error():
@@ -79,4 +108,44 @@ def validation():
     if len(user['email']) < 1:
         form_data['email_error'] = 'Invalid email!'
         valid = False;
+
+    if is_user_ready_exist():
+        form_data['name_error'] = 'Name already exists!'
+        valid = False;
     return valid
+
+
+def is_user_ready_exist():
+    user_from_list = find_user()
+    return user_from_list is not None
+
+
+def find_user():
+    # for u in user_list gehe alle benutzer in der liste durch
+    print(f"user: {user}")
+    print(f"user_list: {len(user_list)}")
+    for item in user_list:
+        print(f"item: {item}")
+    filtered_user = [item for item in user_list if 'name' in item and item['name'] == user['name']]
+    if filtered_user is not None and len(filtered_user) > 0:
+        return filtered_user[0]
+    return None
+
+
+@app.route('/register/confirm/')
+def data_confirmation():
+    global user
+    user_list.append(user)  # füge der neu registrierte user in die liste
+    write_user_list_to_file()
+    return render_template('confirmed.html', user=user)
+
+
+def write_user_list_to_file():
+    with open(USER_FILE_NAME, 'w') as json_file:
+        json.dump(user_list, json_file)  # schreibe die benutzerliste in die datei
+
+
+@app.route('/user-list/')
+def list_of_user():
+
+    return render_template('user_list.html', user_list=load_user())
