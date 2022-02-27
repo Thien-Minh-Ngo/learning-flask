@@ -15,6 +15,7 @@ def load_user():
 
 user_list = load_user()
 
+search_term = ''
 
 user = {
     "name": "",
@@ -147,5 +148,26 @@ def write_user_list_to_file():
 
 @app.route('/user-list/')
 def list_of_user():
+    # is search_term not None
+    print(f"search_term: {search_term}, in Thien-Minh: {search_term in 'Thien-Minh'}")
+    filtered_user = load_user()
+    if search_term is not None and len(search_term) > 0:
+        filtered_user = [item for item in filtered_user if search_term.lower() in item['name'].lower()]
+        print(f"filtered_user: {filtered_user}")
+    # => filter nach search_term
+    # user_list = load_user()
+    # gehe alle user durch, und filtern nach search_term
+    # filtered_user an template weiter geben
+    return render_template('user_list.html', user_list=filtered_user, term=search_term)
 
-    return render_template('user_list.html', user_list=load_user())
+# search_term aus form lesen
+# redirect to user_list
+
+
+@app.route('/search/user/', methods=['POST'])
+def user_search():
+    global search_term
+    search_term = request.form['search_term'].strip()
+    return redirect('/user-list/')
+
+

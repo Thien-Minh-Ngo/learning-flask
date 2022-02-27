@@ -40,3 +40,12 @@
     flex-wrap: wrap;
 }
 
+.searchbar {
+    display: flex;
+}
+
+.searchbarbutton {
+    width: 30px;
+    height: 22px;
+}
+}

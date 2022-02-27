@@ -1,0 +1,15 @@
+{% extends "main_page.html" %}
+
+{% block container %}
+<form action="/form/save" method="POST">
+    <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" value="{{name}}">
+    </div>
+    <div>
+        <label for="password">Passwort</label>
+        <input id="password" type="password" name="password">
+    </div>
+        <button>Submit</button>
+</form>
+{% endblock %}

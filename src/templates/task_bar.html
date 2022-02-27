@@ -12,6 +12,13 @@
         <h4 class="centered">9:30</h4>
     </div>
     <div class="right">
-
+        <form method="post" action="/search/user/">
+            <div class="">
+                <input type="text" name="search_term" id="search_term">
+                <button type="submit" class="button">
+                    <img src="{{url_for('static', filename='images/search.png')}}" align="middle" width="25px"/>
+                </button>
+            </div>
+        </form>
     </div>
 </div>

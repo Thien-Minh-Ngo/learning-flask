@@ -1,6 +1,14 @@
 {% extends "main_page.html" %}
 {% block container %}
-<h2>List of all users:</h2>
+<h2>List of users:</h2>
+<form method="post" action="/search/user/">
+    <div class="row">
+        <input type="text" name="search_term" id="search_term" value="{{term}}">
+        <button type="submit" class="searchbarbutton">
+            <img src="{{url_for('static', filename='images/search.png')}}" align="middle" height="19px"/>
+        </button>
+    </div>
+</form>
 <div class="col2">
 <table>
     <thead>
